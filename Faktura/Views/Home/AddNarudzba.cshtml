@@ -1,0 +1,26 @@
+﻿@using Fakture.Controllers
+@using Fakture.Models
+@using Fakture.ViewModels
+@using Fakture.Helper
+
+@model AddNarudzba
+
+@{
+    ViewData["Title"] = "Dodavanje nove narudzbe";
+}
+
+@{
+    Korisnik korisnik = Context.GetLogiraniKorisnik();
+}
+<h1>Dodavanje nove narudzbe </h1>
+<form class="form-group" asp-controller="Home" asp-action="SaveNarudzba" method="post">
+    <input asp-for="@Model.ProizvodId" hidden>
+    <input asp-for="@Model.NarudzbaId" hidden>
+    <div class="form-group">
+        <label>Kolicina</label>
+        <input type="text" asp-for="@Model.Kolicina" class="form-control" />
+
+    </div>
+    <input type="submit" value="Dodaj" class="btn btn-success" />
+</form>
+

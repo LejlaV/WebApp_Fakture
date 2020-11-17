@@ -1,0 +1,38 @@
+﻿@using Fakture.Controllers
+@using Fakture.Models
+@using Fakture.ViewModels
+@using Fakture.Helper
+
+@model ProizvodiIndexVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+<h1>Prikaz proizvoda</h1>
+<a asp-controller="Home" asp-action="NarudzbeIndex" asp-route-kupacId="@Model.KupacId" class="btn btn-primary" style="float:right">
+    Moje narudžbe
+</a>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Naziv proizvoda</th>
+            <th>Cijena</th>
+            <th>Sifra</th>
+            <th>Akcija</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.rows)
+        {
+            <tr>
+                <td>@x.Naziv</td>
+                <td>@x.Cijena</td>
+                <td>@x.Sifra</td>
+                <td>
+                    <a asp-controller="Home" asp-action="AddNarudzba"
+                       asp-route-proizvodId="@x.ProizvodId" class="btn btn-primary">Dodaj proizvod u korpu</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

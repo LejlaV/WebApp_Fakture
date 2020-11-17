@@ -1,0 +1,34 @@
+﻿@using Fakture.Controllers
+@using Fakture.Models
+@using Fakture.ViewModels
+@using Fakture.Helper
+
+@model PrikazNarudzbiVM
+
+@{
+    ViewData["Title"] = "Prikaz narudzbi";
+}
+
+<h1>Prikaz narudzbi</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Broj narudzbe</th>
+            <th>Kupac</th>
+            <th>Datum</th>
+            <th>Aktivna</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.rows)
+        {
+        <tr>
+            <td>@x.BrojNarudzbe</td>
+            <td>@x.KupacPodaci</td>
+            <td>@x.Datum</td>
+            <td>@x.Aktivna</td>
+        </tr>
+        }
+    </tbody>
+</table>
+

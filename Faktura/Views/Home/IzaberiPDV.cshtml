@@ -1,0 +1,25 @@
+﻿@using Fakture.Controllers
+@using Fakture.Models
+@using Fakture.ViewModels
+@using Fakture.Helper
+
+@model IzaberiPDV
+
+@{
+    ViewData["Title"] = "Dodavanje nove narudzbe";
+}
+
+@{
+    Korisnik korisnik = Context.GetLogiraniKorisnik();
+}
+<h1>Izaberi pdv </h1>
+<form class="form-group" asp-controller="Home" asp-action="SaveFaktura" method="post">
+    <input asp-for="@Model.novaFakturaId" hidden>
+    <input asp-for="@Model.narudbzaId" hidden>
+    <div class="form-group">
+        <label>PDV IZNOS</label>
+        <select asp-for="@Model.PdvId" asp-items="@Model.pdv" class="form-control"></select>
+    </div>
+    <input type="submit" value="Izaberi" class="btn btn-success" />
+</form>
+

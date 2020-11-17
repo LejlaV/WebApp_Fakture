@@ -1,0 +1,43 @@
+﻿@using Fakture.Controllers
+@using Fakture.Models
+@using Fakture.ViewModels
+@using Fakture.Helper
+
+@model FakturaIndexVM
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Prikaz fakture</h1>
+<form class="form-group">
+
+    <div class="form-group">
+        <label>Kupac</label>
+        <input type="text" asp-for="@Model.kupacPodaci" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label>Datum izdavanja računa</label>
+        <input type="text" asp-for="@Model.Datum" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label>Broj fakture</label>
+        <input type="text" asp-for="@Model.BrojFakture" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label>Broj narucenih proizvoda</label>
+        <input type="text" asp-for="@Model.BrojNarucenihProizvoda" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label>Ukupan iznos bez PDV</label>
+        <input type="text" asp-for="@Model.IznosBezPdv" class="form-control" readonly />
+    </div>
+    <div class="form-group">
+        <label>Ukupan iznos sa BiHPDV</label>
+        <input type="text" asp-for="@Model.IznosSaPdv" class="form-control" readonly />
+    </div>
+    @*<div class="form-group">
+        <label>Ukupan iznos sa HrPDV</label>
+        <input type="text" asp-for="@Model.IznosSaPdvHr" class="form-control" readonly />
+    </div>*@
+</form>

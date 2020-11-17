@@ -1,0 +1,48 @@
+﻿@using Fakture.Controllers
+@using Fakture.Models
+@using Fakture.ViewModels
+@using Fakture.Helper
+
+@model NarudzbeIndexVM 
+
+@{
+    ViewData["Title"] = "Prikaz narudzbi";
+}
+
+<h1>Prikaz narudzbi za kupca @Model.KupacPodaci</h1>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Datum</th>
+            <th>Aktivna</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var x in Model.rows)
+        {
+        <tr>
+            <td>@x.Datum</td>
+            <td>@x.Aktivna</td>
+            @if (x.Aktivna == "DA")
+            {
+        <td>
+            <a asp-controller="Home" asp-action="IzaberiPDV"
+               asp-route-narudzbaId="@x.NarudzbaId" class="btn btn-primary">Procesiraj narudzbu</a>
+            <a asp-controller="Home" asp-action="Index"
+              class="btn btn-primary">Nastavi kupovinu</a>
+        </td>
+            }
+            else
+            {
+        <td>
+            Faktura je vec izdata za ovu narudzbu!
+                    <a asp-controller="Home" asp-action="PrikazFaktureZaNarudzbu"
+                       asp-route-narudzbaId="@x.NarudzbaId" class="btn btn-primary">Pogledaj fakturu</a>
+        </td>
+            }
+
+        </tr>
+        }
+    </tbody>
+</table>
+
